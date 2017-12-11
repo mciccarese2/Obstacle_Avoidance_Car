@@ -1,5 +1,3 @@
-//www.elegoo.com
-//2016.09.12 testare
 #include <Servo.h> //servo library
 #include "configuration.h"
 #include "motor.h"
