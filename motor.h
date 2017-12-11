@@ -1,8 +1,8 @@
 /*define forward function*/
 void go_Forward(int speed)
 {
-  digitalWrite(ENA, ABS);
-  digitalWrite(ENB, ABS);
+  digitalWrite(pinEnableMotorA, ABS);
+  digitalWrite(pinEnableMotorB, ABS);
   digitalWrite(pinMotor1, LOW); //digital output
   digitalWrite(pinMotor2, speed);
   digitalWrite(pinMotor3, LOW);
@@ -12,8 +12,8 @@ void go_Forward(int speed)
 /*define back function*/
 void go_Back(int speed)
 {
-  digitalWrite(ENA, ABS);
-  digitalWrite(ENB, ABS);
+  digitalWrite(pinEnableMotorA, ABS);
+  digitalWrite(pinEnableMotorB, ABS);
   digitalWrite(pinMotor1, speed);
   digitalWrite(pinMotor2, LOW);
   digitalWrite(pinMotor3, speed);
@@ -22,16 +22,16 @@ void go_Back(int speed)
 }
 void stop_Stop()
 {
-  digitalWrite(ENA, LOW);
-  digitalWrite(ENB, LOW);
+  digitalWrite(pinEnableMotorA, LOW);
+  digitalWrite(pinEnableMotorB, LOW);
   Serial.println("Stop");
 }
 
 /*define left function*/
 void go_Left(int speed)
 {
-  digitalWrite(ENA, ABS);
-  digitalWrite(ENB, ABS);
+  digitalWrite(pinEnableMotorA, ABS);
+  digitalWrite(pinEnableMotorB, ABS);
   digitalWrite(pinMotor1, LOW);
   digitalWrite(pinMotor2, speed);
   digitalWrite(pinMotor3, speed);
@@ -41,8 +41,8 @@ void go_Left(int speed)
 /*define right function*/
 void go_Right(int speed)
 {
-  digitalWrite(ENA, ABS);
-  digitalWrite(ENB, ABS);
+  digitalWrite(pinEnableMotorA, ABS);
+  digitalWrite(pinEnableMotorB, ABS);
   digitalWrite(pinMotor1, speed);
   digitalWrite(pinMotor2, LOW);
   digitalWrite(pinMotor3, LOW);
@@ -53,8 +53,8 @@ void go_Right(int speed)
 /*set motor speed */
 void set_Motorspeed(int speed_L,int speed_R)
 {
-  analogWrite(ENA,speed_L); 
-  analogWrite(ENB,speed_R);   
+  analogWrite(pinEnableMotorA,speed_L); 
+  analogWrite(pinEnableMotorB,speed_R);   
 }
 
 

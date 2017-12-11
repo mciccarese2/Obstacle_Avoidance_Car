@@ -1,17 +1,17 @@
 #define send;
 
-#define Echo A1
-#define Trig A0
+#define pinEcho A1
+#define pinTrig A0
 
-#define LED 13 // Use the onboard Uno LED
+#define pinLed 13 // Use the onboard Uno LED
 
 #define pinMotor1 9
 #define pinMotor2 8
 #define pinMotor3 7
 #define pinMotor4 6
 /*define channel enable output pins*/
-#define ENA 10
-#define ENB 5
+#define pinEnableMotorA 10
+#define pinEnableMotorB 5
 
 #define buzzerPin 2
 

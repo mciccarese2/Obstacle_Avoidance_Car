@@ -6,12 +6,12 @@ Servo myservo; // create servo object to control servo
 /*Ultrasonic distance measurement Sub function*/
 int watch() {
   long howfar;
-  digitalWrite(Trig, LOW);
+  digitalWrite(pinTrig, LOW);
   delayMicroseconds(5);
-  digitalWrite(Trig, HIGH);
+  digitalWrite(pinTrig, HIGH);
   delayMicroseconds(15);
-  digitalWrite(Trig, LOW);
-  howfar = pulseIn(Echo, HIGH);
+  digitalWrite(pinTrig, LOW);
+  howfar = pulseIn(pinEcho, HIGH);
   howfar = howfar * 0.01657; //how far away is the object in cm
   return round(howfar);
 }
@@ -20,15 +20,15 @@ void setup()
 {
   myservo.attach(3);// attach servo on pin 3 to servo object
   Serial.begin(9600);
-  pinMode(Echo, INPUT);
-  pinMode(Trig, OUTPUT);
+  pinMode(pinEcho, INPUT);
+  pinMode(pinTrig, OUTPUT);
   pinMode(pinMotor1, OUTPUT);
   pinMode(pinMotor2, OUTPUT);
   pinMode(pinMotor3, OUTPUT);
   pinMode(pinMotor4, OUTPUT);
-  pinMode(ENA, OUTPUT);
-  pinMode(ENB, OUTPUT);
-  pinMode(LED, OUTPUT);
+  pinMode(pinEnableMotorA, OUTPUT);
+  pinMode(pinEnableMotorB, OUTPUT);
+  pinMode(pinLed, OUTPUT);
   stop_Stop();
 
   // set up the LCD's number of columns and rows:
