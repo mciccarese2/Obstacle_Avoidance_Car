@@ -3,6 +3,9 @@
 #define pinEcho A1
 #define pinTrig A0
 
+#define light_FR  14    //LED Front Right   pin A0 for Arduino Uno
+#define light_FL  15    //LED Front Left    pin A1 for Arduino Uno
+
 #define pinLed 13 // Use the onboard Uno LED
 
 #define pinMotorA1 9

@@ -2,7 +2,12 @@
 #include "configuration.h"
 #include "motor.h"
 #include "alarm.h"
+#include "luci.h"
+
 Servo myservo; // create servo object to control servo
+
+boolean lightFront = false;
+
 /*Ultrasonic distance measurement Sub function*/
 int watchingAround() {
   long howfar;
@@ -29,6 +34,8 @@ void setup()
   pinMode(pinEnableMotorA, OUTPUT);
   pinMode(pinEnableMotorB, OUTPUT);
   pinMode(pinLed, OUTPUT);
+  pinMode(light_FR, OUTPUT);
+  pinMode(light_FL, OUTPUT);
   stop_Stop();
 
   // set up the LCD's number of columns and rows:
@@ -38,6 +45,8 @@ void setup()
 }
 void loop()
 {
+  frontLight(lightFront);
+ 
   myservo.write(90);//setservo position according to scaled value
   delay(100);
   middleDistance = watchingAround();
@@ -52,6 +61,7 @@ void loop()
     myservo.write(10);//10°-180°
     delay(100);
     rightDistance = watchingAround();
+    lightFront = false;
 #ifdef send
     Serial.print("rightDistance=");
     Serial.println(rightDistance);
@@ -73,6 +83,7 @@ void loop()
       alarm();
       go_Right(TURN_SPEED);
       delay(turntime);
+      lightFront = false;
     }
     // else if (rightDistance < leftDistance)
     if ((leftDistance > sideDistanceLimit || rightDistance < sideDistanceLimit) || rightDistance < leftDistance)
@@ -86,14 +97,17 @@ void loop()
     {
       alarm();
       go_Back(TURN_SPEED);
+      lightFront = false;
       delay(turntime);
     }
     else
     {
+      lightFront = true;
       go_Forward(FWD_SPEED);
     }
   }
   else {
+    lightFront = true;
     go_Forward(FWD_SPEED);
   }
 }
