@@ -4,7 +4,7 @@
 #include "alarm.h"
 Servo myservo; // create servo object to control servo
 /*Ultrasonic distance measurement Sub function*/
-int watch() {
+int watchingAround() {
   long howfar;
   digitalWrite(pinTrig, LOW);
   delayMicroseconds(5);
@@ -22,10 +22,10 @@ void setup()
   Serial.begin(9600);
   pinMode(pinEcho, INPUT);
   pinMode(pinTrig, OUTPUT);
-  pinMode(pinMotor1, OUTPUT);
-  pinMode(pinMotor2, OUTPUT);
-  pinMode(pinMotor3, OUTPUT);
-  pinMode(pinMotor4, OUTPUT);
+  pinMode(pinMotorA1, OUTPUT);
+  pinMode(pinMotorA2, OUTPUT);
+  pinMode(pinMotorB3, OUTPUT);
+  pinMode(pinMotorB4, OUTPUT);
   pinMode(pinEnableMotorA, OUTPUT);
   pinMode(pinEnableMotorB, OUTPUT);
   pinMode(pinLed, OUTPUT);
@@ -40,7 +40,7 @@ void loop()
 {
   myservo.write(90);//setservo position according to scaled value
   delay(100);
-  middleDistance = watch();
+  middleDistance = watchingAround();
 #ifdef send
   Serial.print("middleDistance=");
   Serial.println(middleDistance);
@@ -51,7 +51,7 @@ void loop()
     alarm();
     myservo.write(10);//10°-180°
     delay(100);
-    rightDistance = watch();
+    rightDistance = watchingAround();
 #ifdef send
     Serial.print("rightDistance=");
     Serial.println(rightDistance);
@@ -59,7 +59,7 @@ void loop()
     myservo.write(90);
     myservo.write(180);
     delay(500);
-    leftDistance = watch();
+    leftDistance = watchingAround();
 #ifdef send
     Serial.print("leftDistance=");
     Serial.println(leftDistance);
@@ -81,7 +81,6 @@ void loop()
       go_Left(TURN_SPEED);
       delay(turntime);
     }
-    
     //else if ((rightDistance <= sideDistanceLimit) || (leftDistance <= sideDistanceLimit))
     if ((rightDistance <= sideDistanceLimit) || (leftDistance <= sideDistanceLimit))
     {
@@ -98,6 +97,3 @@ void loop()
     go_Forward(FWD_SPEED);
   }
 }
-
-
-

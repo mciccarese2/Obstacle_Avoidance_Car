@@ -5,10 +5,10 @@
 
 #define pinLed 13 // Use the onboard Uno LED
 
-#define pinMotor1 9
-#define pinMotor2 8
-#define pinMotor3 7
-#define pinMotor4 6
+#define pinMotorA1 9
+#define pinMotorA2 8
+#define pinMotorB3 7
+#define pinMotorB4 6
 /*define channel enable output pins*/
 #define pinEnableMotorA 10
 #define pinEnableMotorB 5
